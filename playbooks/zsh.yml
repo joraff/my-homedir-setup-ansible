@@ -1,0 +1,47 @@
+---
+- name: check if oh-my-zsh is installed
+  stat: 
+    path: ~/.oh-my-zsh/oh-my-zsh.sh
+  register: installed
+
+- name: install oh-my-zsh
+  block:
+    - command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  when: not installed.stat.exists
+
+- name: install powerline10k
+  community.general.homebrew:
+    name: romkatv/powerlevel10k/powerlevel10k
+
+- name: install meslo fonts
+  get_url:
+    url: "https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/{{ item }}"
+    dest: "/Library/Fonts/{{ item }}"
+  with_items:
+    - MesloLGS%20NF%20Regular.ttf
+    - MesloLGS%20NF%20Bold.ttf
+    - MesloLGS%20NF%20Italic.ttf
+    - MesloLGS%20NF%20Bold%20Italic.ttf
+
+- name: create home dire .inc directory
+  file:
+    path: ~/.inc
+    state: directory
+
+- name: install google-cloud-sdk
+  unarchive:
+    src: https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-335.0.0-darwin-x86_64.tar.gz
+    dest: ~/.inc
+    remote_src: yes
+
+- name: install zshrc file
+  copy:
+    src: zshrc
+    dest: ~/.zshrc
+
+- name: install powerline10k config file
+  copy:
+    src: p10k.zsh
+    dest: ~/.p10k.zsh
+      

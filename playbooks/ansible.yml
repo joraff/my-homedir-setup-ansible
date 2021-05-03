@@ -1,0 +1,12 @@
+---
+- name: Enable yaml output callpack plugin
+  lineinfile:
+    path: ~/.ansible.cfg
+    regex: '^stdout_callback'
+    line: stdout_callback = yaml
+    
+- name: Use the stdout_callback when running ad-hoc commands.
+  lineinfile:
+    path: ~/.ansible.cfg
+    regex: '^bin_ansible_callbacks'
+    line: bin_ansible_callbacks = True

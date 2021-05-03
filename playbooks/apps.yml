@@ -1,0 +1,58 @@
+---
+- name: Installing apps through homebrew (casks)
+  community.general.homebrew_cask:
+    name:
+      - visual-studio-code
+      - iterm2
+      - tower
+      - microsoft-office
+      - microsoft-teams
+      - kaleidoscope
+      - 1password
+      - signal
+      - transmit
+      - ytmdesktop-youtube-music
+      - slack
+      - google-chrome
+      - microsoft-edge
+      - firefox
+      - postman
+      - vlc
+      - fantastical
+      - zoom
+      - amazon-chime
+      - docker
+      - transmission
+    state: present
+
+- name: Installing apps through homebrew
+  community.general.homebrew:
+    name:
+      - kubectl
+      - gnu-tar
+      - mas
+      - speedtest-cli
+      - gh
+      - azure-cli
+      - terraform
+      - act
+      - awscli
+      - watch
+      - jq
+      - nodejs
+    state: present
+
+- name: Install apps from the App Store
+  community.general.mas:
+    id:
+      - 1176895641 # spark
+      - 419330170  # moom
+      - 1419729466 # namecheap vpn
+
+- name: Allowing openconnecto to run as root without a password
+  become: yes
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: '%admin  ALL=(ALL) NOPASSWD: /usr/local/bin/openconnect'
+    validate: '/usr/sbin/visudo -cf %s'

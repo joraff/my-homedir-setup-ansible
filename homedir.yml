@@ -1,0 +1,10 @@
+---
+- name: Installs macOS Apps
+  hosts: localhost
+  tasks:
+    - include: playbooks/ansible.yml
+      tags: ansible
+    - include: playbooks/apps.yml
+      tags: apps
+    - include: playbooks/zsh.yml
+      tags: zsh
