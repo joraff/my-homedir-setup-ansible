@@ -18,5 +18,5 @@ brew link --overwrite ansible@2.9
 # Run ansible playbook
 ansible-playbook homedir.yml --connection=local
 
-
-
+# Pull latest community module (temporary homebrew cask fixes)
+ansible-galaxy collection  install community.general --force
