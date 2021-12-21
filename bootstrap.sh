@@ -20,3 +20,4 @@ ansible-playbook homedir.yml --connection=local
 
 # Pull latest community module (temporary homebrew cask fixes)
 ansible-galaxy collection  install community.general --force
+ansible-galaxy install gantsign.visual-studio-code-extensions

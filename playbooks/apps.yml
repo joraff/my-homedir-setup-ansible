@@ -2,47 +2,59 @@
 - name: Installing apps through homebrew (casks)
   community.general.homebrew_cask:
     name:
-      - visual-studio-code
+      - 1password
+      - amazon-chime
+      - aws-vault
+      - docker
+      - fantastical
+      - firefox
+      - google-chrome
       - iterm2
-      - tower
+      - kaleidoscope
+      - keybase
+      - microsoft-auto-update
+      - microsoft-edge
       - microsoft-office
       - microsoft-teams
-      - kaleidoscope
-      - 1password
-      - signal
-      - transmit
-      - ytmdesktop-youtube-music
-      - slack
-      - google-chrome
-      - microsoft-edge
-      - firefox
       - postman
-      - vlc
-      - fantastical
-      - zoom
-      - amazon-chime
-      - docker
+      - powershell
+      - signal
+      - slack
+      - tower
       - transmission
+      - transmit
+      - visual-studio-code
+      - vlc
+      - zoom
     state: present
 
 - name: Installing apps through homebrew
   community.general.homebrew:
     name:
-      - kubectl
-      - gnu-tar
-      - mas
-      - speedtest-cli
-      - gh
-      - azure-cli
-      - terraform
       - act
       - awscli
-      - watch
-      - jq
-      - nodejs
+      - azure-cli
+      - cloudflare/cloudflare/cloudflared
+      - coreutils
+      - gh
+      - gnu-tar
       - gpg
-      - zsh-autosuggestions
+      - hashicorp/tap/terraform-ls
+      - helm
+      - inframap
+      - jq
+      - kubectl
+      - mas
+      - md5sha1sum
+      - nodejs
+      - speedtest-cli
+      - steampipe
+      - terraform
+      - timeout
+      - watch
+      - wget
       - yq
+      - zsh-autosuggestions
     state: present
 
 - name: Install apps from the App Store
@@ -50,5 +62,11 @@
     id:
       - 1176895641 # spark
       - 419330170  # moom
-      - 1419729466 # namecheap vpn
-
+      - 1419729466 # fast vpn
+      - 409907375  # Remote Desktop
+      - 1274495053 # Microsoft To Do
+      - 1475387142 # Tailscale
+      - 472226235  # LanScan
+      - 409183694  # Keynote
+      - 409201541  # Pages
+      - 409203825  # Numbers

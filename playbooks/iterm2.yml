@@ -1,0 +1,13 @@
+---
+- name: set external location for iterm prefs
+  community.general.osx_defaults:
+    domain: com.googlecode.iterm2
+    key: PrefsCustomFolder
+    type: string
+    value: "$HOME/.config/iterm2"
+    state: present
+
+- name: install iterm2 preference file
+  copy:
+    src: iterm2/com.googlecode.iterm2.plist
+    dest: $HOME/.config/iterm2/com.googlecode.iterm2.plist

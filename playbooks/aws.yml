@@ -1,0 +1,5 @@
+---
+- name: install aws profiles
+  copy:
+    src: aws/config
+    dest: $HOME/.aws/config

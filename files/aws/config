@@ -1,0 +1,28 @@
+[profile aip-root]
+sso_start_url = https://aggie-innovation-platform.awsapps.com/start#/
+credential_process = aws-vault exec --json
+sso_region = us-east-2
+sso_account_id = 704918398091
+sso_role_name = AdministratorAccess
+region = us-east-1
+
+[profile aip-infrastructure]
+sso_start_url = https://aggie-innovation-platform.awsapps.com/start#/
+credential_process = aws-vault exec --json
+sso_region = us-east-2
+sso_account_id = 165677169743
+sso_role_name = AdministratorAccess
+
+[profile aip-transit-network]
+sso_start_url = https://aggie-innovation-platform.awsapps.com/start#/
+#credential_process = aws-vault exec --json
+sso_region = us-east-2
+sso_account_id = 802019628232
+sso_role_name = AdministratorAccess
+
+[profile aip-genesis]
+sso_start_url = https://aggie-innovation-platform.awsapps.com/start#/
+; credential_process = aws-vault exec --json
+sso_region = us-east-2
+sso_account_id = 442707310061
+sso_role_name = AdministratorAccess

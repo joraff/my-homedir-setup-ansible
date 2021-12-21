@@ -1,11 +1,53 @@
 ---
-- name: Installs macOS Apps
+- name: Configure new macos system
   hosts: localhost
-  gather_facts: no
+  gather_facts: 
   tasks:
     - include: playbooks/ansible.yml
       tags: ansible
     - include: playbooks/apps.yml
       tags: apps
     - include: playbooks/zsh.yml
-      tags: zsh
+      tags: ["zsh", "config"]
+    - include: playbooks/vscode.yml
+      tags: ["vscode", "config"]
+    - include: playbooks/iterm2.yml
+      tags: ["iterm2", "config"]
+    - include: playbooks/aws.yml
+      tags: ["aws", "config"]
+  roles:
+    - role: gantsign.visual-studio-code-extensions
+      tags: ["vscode", "config"]
+      ansible_pkg_mgr: "homebrew"
+      users:
+        - username: "{{ lookup('env', 'USER') }}"
+          visual_studio_code_extensions:
+            - 4ops.packer
+            - bierner.markdown-preview-github-styles
+            - brijeshb42.vscode-excalidraw
+            - DavidAnson.vscode-markdownlint
+            - GitHub.vscode-pull-request-github
+            - golang.go
+            - googlecloudtools.cloudcode
+            - hashicorp.terraform
+            - hediet.vscode-drawio
+            - HookyQR.beautify
+            - keesschollaart.vscode-home-assistant
+            - ms-azuretools.vscode-docker
+            - ms-kubernetes-tools.vscode-kubernetes-tools
+            - ms-python.python
+            - ms-python.vscode-pylance
+            - ms-toolsai.jupyter
+            - ms-toolsai.jupyter-keymap
+            - ms-toolsai.jupyter-renderers
+            - ms-vscode-remote.remote-containers
+            - ms-vscode.azure-account
+            - ms-vscode.powershell
+            - redhat.vscode-yaml
+            - ronnidc.nunjucks
+            - streetsidesoftware.code-spell-checker
+            - uctakeoff.vscode-counter
+            - wholroyd.HCL
+            - wholroyd.jinja
+          visual_studio_code_extensions_absent: []
+  

@@ -1,0 +1,5 @@
+---
+- name: install vscode settings file
+  copy:
+    src: vscode/settings.json
+    dest: $HOME/Library/Application Support/Code/User/settings.json
